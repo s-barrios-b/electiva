@@ -192,7 +192,37 @@
             z-index: 5;
         }
 
-    </style>
+        /* BOTONES DE NAVEGACIÓN (Anterior / Siguiente) */
+        .nav-buttons {
+            pointer-events: none;
+        }
+        .nav-button {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            border: none;
+            background: rgba(255,255,255,0.95);
+            color: var(--primary-dark);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 18px;
+            pointer-events: auto;
+        }
+        .nav-button:hover { transform: scale(1.06); }
+        .nav-button:disabled, .nav-button[aria-disabled="true"] {
+            opacity: 0.35;
+            cursor: not-allowed;
+            transform: none;
+        }
+        .nav-button.prev { position: fixed; left: 18px; top: 50%; transform: translateY(-50%); z-index: 160; }
+        .nav-button.next { position: fixed; right: 18px; top: 50%; transform: translateY(-50%); z-index: 160; }
+        .nav-button i { font-size: 18px; }
+
+        </style>
 </head>
 <body>
 
@@ -208,6 +238,16 @@
         <a href="#slide9"></a>
     </nav>
 
+    <!-- BOTONES DE NAVEGACIÓN (sin usar el ratón para scroll) -->
+    <div class="nav-buttons" aria-hidden="false">
+        <button class="nav-button prev" id="prevBtn" aria-label="Anterior" title="Anterior" type="button">
+            <i class="fa-solid fa-chevron-left"></i>
+        </button>
+        <button class="nav-button next" id="nextBtn" aria-label="Siguiente" title="Siguiente" type="button">
+            <i class="fa-solid fa-chevron-right"></i>
+        </button>
+    </div>
+
     <!-- SLIDE 1: INTRODUCCIÓN IMPACTANTE -->
     <section id="slide1" class="active">
         <div class="paper-overlay"></div>
@@ -218,11 +258,11 @@
                 <div class="accent-line"></div>
                 <p>Un análisis ético sobre el reconocimiento de las víctimas en el Tolima, basado en el testimonio de <strong>Emilia Velásquez Pérez</strong>.</p>
                 <div style="margin-top: 40px; font-size: 14px; text-transform: uppercase; letter-spacing: 2px;">
-                    Universidad Nacional de Colombia • 2024
+                    Sebastián Barrios Barrios - Universidad de la Costa • 2026
                 </div>
             </div>
             <div class="visual-container">
-                <img src="https://images.unsplash.com/photo-1518182170546-076616fdcbac?q=80&w=1000&auto=format&fit=crop" class="main-photo" alt="Cordillera andina con niebla">
+                <img src="1.png" class="main-photo" alt="Cordillera andina con niebla">
                 <div style="position: absolute; bottom: 20px; right: 20px; background: rgba(15, 23, 42, 0.85); color: white; padding: 10px 15px; font-size: 11px; letter-spacing: 1px;">
                     CORDILLERA CENTRAL ANDINA • COLOMBIA
                 </div>
@@ -234,7 +274,7 @@
     <section id="slide2">
         <div class="slide-content">
             <div class="visual-container" style="height: 450px;">
-                <img src="https://images.unsplash.com/photo-1595593125211-19dff3bbcc87?q=80&w=1000&auto=format&fit=crop" class="main-photo" alt="Campesino colombiano">
+                <img src="2.png" class="main-photo" alt="Campesino colombiano">
                 <div style="position: absolute; bottom: -20px; left: -20px; background: var(--primary-dark); color: white; padding: 20px; font-size: 12px; letter-spacing: 2px;">
                     CONTEXTO CAMPESINO • SUR DEL TOLIMA
                 </div>
@@ -278,7 +318,7 @@
                 </ul>
             </div>
             <div class="visual-container">
-                <img src="https://images.unsplash.com/photo-1506869502759-3286f0cd1c01?q=80&w=1000&auto=format&fit=crop" class="main-photo" style="filter: sepia(30%) grayscale(40%) contrast(1.2);" alt="Rostro de adulto mayor rural">
+                <img src="3.jpg" class="main-photo" style="filter: sepia(30%) grayscale(40%) contrast(1.2);" alt="Rostro de adulto mayor rural">
                 <div style="position: absolute; bottom: 40px; left: -30px; background: white; padding: 20px 30px; border-left: 4px solid var(--accent-clay); box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
                     <p style="font-family: 'Cormorant Garamond'; font-size: 24px; font-style: italic; margin: 0; color: var(--primary-dark);">"El rostro del otro nos manda."</p>
                 </div>
@@ -290,7 +330,7 @@
     <section id="slide5">
         <div class="slide-content">
             <div class="visual-container">
-                <img src="https://images.unsplash.com/photo-1589408665042-45e0fb141fb5?q=80&w=1000&auto=format&fit=crop" class="main-photo" style="filter: grayscale(60%) sepia(20%);" alt="Vivienda rural colombiana tradicional y precaria">
+                <img src="4.jpg" class="main-photo" style="filter: grayscale(60%) sepia(20%);" alt="Vivienda rural colombiana tradicional y precaria">
                 <div style="position: absolute; top: 20px; right: 20px; background: rgba(146, 64, 14, 0.9); color: white; padding: 10px 15px; font-size: 11px; letter-spacing: 1px;">
                     EL ABANDONO INSTITUCIONAL
                 </div>
@@ -329,7 +369,7 @@
                 </div>
             </div>
             <div class="visual-container">
-                <img src="https://images.unsplash.com/photo-1605280263929-1c429624440f?q=80&w=1000&auto=format&fit=crop" class="main-photo" alt="Manos trabajando, símbolo de tejido social">
+                <img src="6.jpg" class="main-photo" alt="Manos trabajando, símbolo de tejido social">
                 <div style="position: absolute; bottom: 20px; left: 20px; background: rgba(255, 255, 255, 0.95); color: var(--primary-dark); padding: 15px 20px; font-size: 12px; letter-spacing: 1px; box-shadow: 0 5px 15px rgba(0,0,0,0.05);">
                     RECONSTRUCCIÓN DEL TEJIDO SOCIAL
                 </div>
@@ -341,7 +381,7 @@
     <section id="slide7">
         <div class="slide-content" style="grid-template-columns: 0.8fr 1.2fr;">
             <div class="visual-container" style="box-shadow: 20px 20px 60px rgba(0,0,0,0.1);">
-                <img src="image_18c2e6.jpg" class="emilia-portrait" alt="Emilia Velásquez">
+                <img src="7.jpg" class="emilia-portrait" alt="Emilia Velásquez">
             </div>
             <div class="text-block" style="padding-left: 40px;">
                 <span class="section-number">El Caso Real</span>
@@ -374,7 +414,7 @@
                 </div>
             </div>
             <div class="visual-container">
-                <img src="https://images.unsplash.com/photo-1556228578-0d85b1a4d571?q=80&w=1000&auto=format&fit=crop" class="main-photo" alt="Máquina de coser industrial, taller de confección">
+                <img src="10.jpg" class="main-photo" alt="Máquina de coser industrial, taller de confección">
                 <div style="position: absolute; top: -20px; right: -20px; background: var(--primary-dark); color: white; padding: 20px 30px; z-index: 10; text-align: center; box-shadow: 0 10px 20px rgba(0,0,0,0.2);">
                     <i class="fa-solid fa-shirt" style="font-size: 30px; color: var(--accent-clay);"></i>
                     <div style="margin-top: 10px; font-size: 12px; letter-spacing: 2px;">TALLER SUBL&CONFE</div>
@@ -405,6 +445,8 @@
         // Sistema de navegación y detección de slide activo
         const sections = document.querySelectorAll('section');
         const dots = document.querySelectorAll('.nav-dots a');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
 
         const observerOptions = {
             threshold: 0.6
@@ -413,18 +455,67 @@
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
+                    // Marcar sólo la sección visible como active
+                    sections.forEach(s => s.classList.remove('active'));
                     entry.target.classList.add('active');
                     // Actualizar dots
                     const id = entry.target.getAttribute('id');
                     dots.forEach(dot => {
-                        dot.style.background = dot.getAttribute('href') === `#${id}` ? '#92400e' : 'rgba(255,255,255,0.3)';
-                        dot.style.transform = dot.getAttribute('href') === `#${id}` ? 'scale(1.5)' : 'scale(1)';
+                        const isActive = dot.getAttribute('href') === `#${id}`;
+                        dot.style.background = isActive ? '#92400e' : 'rgba(255,255,255,0.3)';
+                        dot.style.transform = isActive ? 'scale(1.5)' : 'scale(1)';
                     });
+                    updateNavButtons();
                 }
             });
         }, observerOptions);
 
         sections.forEach(section => observer.observe(section));
+
+        function getActiveIndex() {
+            return Array.from(sections).findIndex(s => s.classList.contains('active'));
+        }
+
+        function goToIndex(index) {
+            if (index < 0 || index >= sections.length) return;
+            sections[index].scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function nextSlide() {
+            const idx = getActiveIndex();
+            if (idx < sections.length - 1) goToIndex(idx + 1);
+        }
+
+        function prevSlide() {
+            const idx = getActiveIndex();
+            if (idx > 0) goToIndex(idx - 1);
+        }
+
+        function updateNavButtons() {
+            const idx = getActiveIndex();
+            if (!prevBtn || !nextBtn) return;
+            prevBtn.disabled = idx <= 0;
+            nextBtn.disabled = idx >= sections.length - 1;
+            prevBtn.setAttribute('aria-disabled', String(prevBtn.disabled));
+            nextBtn.setAttribute('aria-disabled', String(nextBtn.disabled));
+        }
+
+        if (prevBtn) prevBtn.addEventListener('click', prevSlide);
+        if (nextBtn) nextBtn.addEventListener('click', nextSlide);
+
+        // Navegación por teclado
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight') { e.preventDefault(); nextSlide(); }
+            if (e.key === 'ArrowLeft') { e.preventDefault(); prevSlide(); }
+            if (e.key === 'Home') { e.preventDefault(); goToIndex(0); }
+            if (e.key === 'End') { e.preventDefault(); goToIndex(sections.length - 1); }
+        });
+
+        // Inicializar estados
+        window.addEventListener('load', updateNavButtons);
+        dots.forEach(dot => dot.addEventListener('click', () => {
+            setTimeout(updateNavButtons, 300);
+        }));
     </script>
 </body>
 </html>
